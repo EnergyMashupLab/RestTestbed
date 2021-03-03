@@ -76,6 +76,7 @@ public class TeuaRestController {
     public final int DEFAULT_COUNT = 20;
     public final int MAX_COUNT = 2000;
     private int idLimit;
+	static String lma-lmm-ip = null;
 	
 	// Constructor for class TeuaRestController - zero parameters
 	public TeuaRestController()	{
@@ -84,7 +85,20 @@ public class TeuaRestController {
 					this.idLimit);
 		initMapArray(idLimit);
 	}
-	
+
+	// Constructor for class TEUA rest controller takes howMany, IP address of LMA/LMM
+	public TeuaRestController(int howMany, String lmaIp)	{
+		if (howMany > MAX_COUNT)	{
+			logger.trace("Constructor one parameter howMany " + howMany +
+					" > " + MAX_COUNT + " set to " + DEFAULT_COUNT);
+			this.idLimit = DEFAULT_COUNT;
+			this.lma-lmm-ip = lmaIp;
+		}	else {
+			idLimit = howMany;
+		}
+		initMapArray(idLimit);
+	}
+
 	// Constructor for class ClientRestController - zero parameters
 	public TeuaRestController(int howMany)	{
 		if (howMany > MAX_COUNT)	{

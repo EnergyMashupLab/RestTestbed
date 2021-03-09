@@ -76,7 +76,7 @@ public class TeuaRestController {
     public final int DEFAULT_COUNT = 20;
     public final int MAX_COUNT = 2000;
     private int idLimit;
-	static String lma-lmm-ip = null;
+	static final String LMA_IP_ADDRESS = "172.16.1.10";
 	
 	// Constructor for class TeuaRestController - zero parameters
 	public TeuaRestController()	{
@@ -86,18 +86,18 @@ public class TeuaRestController {
 		initMapArray(idLimit);
 	}
 
-	// Constructor for class TEUA rest controller takes howMany, IP address of LMA/LMM
-	public TeuaRestController(int howMany, String lmaIp)	{
-		if (howMany > MAX_COUNT)	{
-			logger.trace("Constructor one parameter howMany " + howMany +
-					" > " + MAX_COUNT + " set to " + DEFAULT_COUNT);
-			this.idLimit = DEFAULT_COUNT;
-			this.lma-lmm-ip = lmaIp;
-		}	else {
-			idLimit = howMany;
-		}
-		initMapArray(idLimit);
-	}
+//	// Constructor for class TEUA rest controller takes howMany, IP address of LMA/LMM
+//	public TeuaRestController(int howMany, String lmaIp)	{
+//		if (howMany > MAX_COUNT)	{
+//			logger.trace("Constructor one parameter howMany " + howMany +
+//					" > " + MAX_COUNT + " set to " + DEFAULT_COUNT);
+//			this.idLimit = DEFAULT_COUNT;
+//			this.lma-lmm-ip = lmaIp;
+//		}	else {
+//			idLimit = howMany;
+//		}
+//		initMapArray(idLimit);
+//	}
 
 	// Constructor for class ClientRestController - zero parameters
 	public TeuaRestController(int howMany)	{
@@ -112,7 +112,7 @@ public class TeuaRestController {
 	}
 	
 	// called by both constructors
-	public void initMapArray(int howMany)	{
+	public static void initMapArray(int howMany)	{
 		int i;    
 		String clientUri, teuaUri;
 
@@ -216,7 +216,7 @@ public class TeuaRestController {
 		
 		//	Log return value (success true or false)
 		logger.debug("TEUA return from client/SC " + clientCreated.getSuccess());
-		
+
 		// 	Return EiCreatedTransactionPayload to sender
 		//	NOTE responds before response from Client/SC
 		//	TODO change EiResponse code if clientCreated indicates failure

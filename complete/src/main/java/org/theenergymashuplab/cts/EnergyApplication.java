@@ -35,7 +35,8 @@ public class EnergyApplication {
 	 */
 	public final int LME_PORT = 39401;		// for Socket Server in LME takes CreateTransaction
 	public final int MARKET_PORT = 39402;	// for Socket Server in Market takes CreateTender 
-	
+
+	public final int NUM_TEUAS;
 	
 	private static final Logger logger = LogManager.getLogger(
 			EnergyApplication.class);
@@ -66,7 +67,10 @@ public class EnergyApplication {
 			logger.info("In CommandLineRunner before getForObject");	
 //			ActorId actorId = restTemplate.getForObject(
 //					"https://lma/party", ActorId.class);
-//			logger.info(actorId.toString());	
+//			logger.info(actorId.toString());
+			String numTeuas = args[1];
+			NUM_TEUAS = Integer.parseInt(numTeuas);
+			TeuaRestController.initMapArray(NUM_TEUAS);
 	};
 
 	/*

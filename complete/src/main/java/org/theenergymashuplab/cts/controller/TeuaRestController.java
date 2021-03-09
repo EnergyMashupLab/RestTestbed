@@ -77,7 +77,7 @@ public class TeuaRestController {
     public final int MAX_COUNT = 2000;
     private int idLimit;
 	static final String LMA_IP_ADDRESS = "172.16.1.10";
-	static final String TEUA_IP_ADDRESS = "";
+	static final String TEUA_IP_ADDRESS = "172.16.1.11";
 	
 	// Constructor for class TeuaRestController - zero parameters
 	public TeuaRestController()	{

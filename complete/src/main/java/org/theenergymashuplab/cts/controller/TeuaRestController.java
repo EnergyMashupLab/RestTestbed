@@ -77,6 +77,7 @@ public class TeuaRestController {
     public final int MAX_COUNT = 2000;
     private int idLimit;
 	static final String LMA_IP_ADDRESS = "172.16.1.10";
+	static final String TEUA_IP_ADDRESS = "";
 	
 	// Constructor for class TeuaRestController - zero parameters
 	public TeuaRestController()	{
@@ -85,19 +86,6 @@ public class TeuaRestController {
 					this.idLimit);
 		initMapArray(idLimit);
 	}
-
-//	// Constructor for class TEUA rest controller takes howMany, IP address of LMA/LMM
-//	public TeuaRestController(int howMany, String lmaIp)	{
-//		if (howMany > MAX_COUNT)	{
-//			logger.trace("Constructor one parameter howMany " + howMany +
-//					" > " + MAX_COUNT + " set to " + DEFAULT_COUNT);
-//			this.idLimit = DEFAULT_COUNT;
-//			this.lma-lmm-ip = lmaIp;
-//		}	else {
-//			idLimit = howMany;
-//		}
-//		initMapArray(idLimit);
-//	}
 
 	// Constructor for class ClientRestController - zero parameters
 	public TeuaRestController(int howMany)	{
@@ -117,9 +105,10 @@ public class TeuaRestController {
 		String clientUri, teuaUri;
 
 	    //	HOOK for SC/Client IP address/port - default is localhost
-	    String clientUriPrefix = "http://localhost:8080/client/";
+	    String clientUriPrefix = "http://" + TEUA_IP_ADDRESS + ":8080/client/";
 	    String clientUriSuffix = "/clientCreateTransaction";
-	    String teuaUriPrefix = "http://localhost:8080/teua/";
+
+	    String teuaUriPrefix = "http://" + TEUA_IP_ADDRESS + ":8080/teua/";
 	    String teuaUriSuffix = "/createTransaction";
 	    ActorIdType tempActorId;
 	    String mapReturns;
